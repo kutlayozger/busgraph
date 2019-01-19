@@ -188,25 +188,13 @@
         obus.node.plaka = plaka;
         obus.node.line = this;
         obus.node.onclick = function () {
-            window.open('ihlaltespit.html?sid=' + getQueryVariable('sid') + '&plaka=' + this.plaka);
-
-            /*
-            var bbox = this.getBBox();
-            bbox.x = 100;
-            bbox.y = 100;
-            bbox.width = brw - 200;
-            bbox.height = brh - 300;
-            if (panel !== null) { panel.remove(); }
-            panel = this.line.paper.rect(300, 150, screen.width - 600, brh - 400, 5);
-            panel.attr("fill", this.line.hintBkgColor);
-            if (this.line.Container.bkgmode === "black") {
-                panel.attr("stroke", "#fff");
-            }
-            panel.node.onclick = function () {
-                panel.remove();
-            };
-            panel.toFront();
-            */
+			if (this.onclick) {
+				this.onclick(self, obus);
+			} else {
+				if (this.onclicklink) {
+					window.open(this.onclicklink + '?sid=' + getQueryVariable('sid') + '&plaka=' + this.plaka)
+				}
+			}
         };
         obus.node.onmouseover = function () {
             var bbox = this.getBBox(), dy = -30, dx = -2;
@@ -252,8 +240,6 @@
         }
     };
     GraphLine.prototype.getBuses = function () {
-        //var that = this;
-        // if (this.timer !== undefined) { }
         $.get("dispatch.aspx?islem=grafikAnlikBilgi&sid=" + getQueryVariable("sid") + "&zaman=&guzergah=" + this.lineNo, function (data) {
             if (data.liste !== undefined) {
                 var line = gc.findLine(data.GuzergahNo);
