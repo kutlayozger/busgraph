@@ -1,3 +1,4 @@
+(function () {
     function GraphContainer(aServer, filter) {
         if (aServer !== undefined) { aServer = 'localhost'; }
         this.server = aServer;
@@ -24,7 +25,6 @@
         }
         return false;
     };
-
 
     GraphContainer.prototype.Add = function (lineNo, stopCount, middleStop, lineName, duraklar) {
         if (!this.inFilter({ GuzergahNo: lineNo })) { return; }
@@ -76,4 +76,5 @@
         return null;
     };
 
-module.exports = GraphContainer;
+    module.exports = GraphContainer;
+}());
