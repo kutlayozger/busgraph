@@ -4,7 +4,7 @@
     'use strict';
 
     var assert = require('assert'),
-        lib = require('..'),
+        lib = require('../src'),
         moment = require("moment"),
         exam = {},
         crudlist,
@@ -45,6 +45,11 @@
                 done();
                 //assert.equal(answer,'YO!');
             }, globalfail);
+        });
+        it('T020', function (done) {
+            var gc = lib.GraphContainer();
+            console.log(gc);
+            done();
         });
 
     });
