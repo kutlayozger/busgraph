@@ -1,10 +1,11 @@
 (function () {
+	var config = require("./GraphConfig");
     function GraphContainer(aServer, filter) {
-        if (aServer !== undefined) { aServer = 'localhost'; }
+        if (aServer !== undefined) { aServer = config.server; }
         this.server = aServer;
         if (filter === undefined) { filter = ""; }
         this.filter = filter;
-        this.bkgmode = "black";
+        this.bkgmode = config.backgroundMode;
         this.lastX = 25;
         this.lines = [];
         this.height = brh - 80;
