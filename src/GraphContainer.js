@@ -1,15 +1,16 @@
 (function () {
 	var config = require("./GraphConfig");
-    function GraphContainer(aServer, filter) {
-        if (aServer !== undefined) { aServer = config.server; }
-        this.server = aServer;
-        if (filter === undefined) { filter = ""; }
-        this.filter = filter;
+    function GraphContainer(aConfig) {
+		config = Object.assign(aConfig, config);
+
+        this.server = config.server;
+        this.filter = config.filter;
         this.bkgmode = config.backgroundMode;
         this.lastX = 25;
         this.lines = [];
         this.height = brh - 80;
     }
+
 
     GraphContainer.prototype.remove = function () {
         var i;

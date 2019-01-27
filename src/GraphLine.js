@@ -1,4 +1,5 @@
-
+(function () {
+    var config = require("./GraphConfig");
     function GraphLine(alineNo, astopCount, amiddleStop, alineName) {
         this.lineNo = alineNo;
         this.stopCount = astopCount;
@@ -9,11 +10,11 @@
         this.color = null;
         this.kalin = 10;
         this.stopRadius = 4; //3.5;
-        this.baseLineColor = '#f88';
-        this.stopColor = '#88f';
-        this.hintBkgColor = "#FFFFE1"; // "#d0d671"; // '#0f0';
-        this.busColor = "#f00";
-        this.busAlrmColor = "#0f0";
+        this.baseLineColor = config.baseLineColor;
+        this.stopColor = config.stopColor;
+        this.hintBkgColor = config.hintBackgroundColor; // "#d0d671"; // '#0f0';
+        this.busColor = config.busColor;
+        this.busAlrmColor = config.busAlarmColor;
         this.buses = [];
         this.stops = [];
         this.durakCntGraph = [];
@@ -259,4 +260,5 @@
         });
     };
 
-module.exports = GraphLine;
+    module.exports = GraphLine;
+}());
