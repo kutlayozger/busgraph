@@ -5,11 +5,11 @@
         this.stopCount = astopCount;
         this.middleStop = amiddleStop;
         this.lineName = alineName;
-        this.BaslangicY = 50;
+        this.BaslangicY = config.lineStartY;
         this.x = 0;
         this.color = null;
-        this.kalin = 10;
-        this.stopRadius = 4; //3.5;
+        this.kalin = config.thickness;
+        this.stopRadius = config.stopRadius; //3.5;
         this.baseLineColor = config.baseLineColor;
         this.stopColor = config.stopColor;
         this.hintBkgColor = config.hintBackgroundColor; // "#d0d671"; // '#0f0';

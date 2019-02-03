@@ -12,7 +12,15 @@
     }
 
 
-    GraphContainer.prototype.remove = function () {
+    GraphContainer.prototype.removeAll = function () {
+        var i;
+        for (i = this.lines.length - 1; i >= 0; i--) {
+            this.lines[i].remove();
+        }
+        this.lines = [];
+    };
+
+    GraphContainer.prototype.removeAll = function () {
         var i;
         for (i = this.lines.length - 1; i >= 0; i--) {
             this.lines[i].remove();

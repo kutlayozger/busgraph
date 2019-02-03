@@ -9,6 +9,9 @@
     config.hintBackgroundColor = "#FFFFE1";
     config.busColor = "#f00";
     config.busAlarmColor = "#0f0";
+	config.lineStartY = 50;
+	config.stopRadius = 4;
+	config.thickness = 10;
 
     module.exports = config;
 }());
