@@ -40,14 +40,12 @@
 
     describe('Basic Test', function () {
         it('T010', function (done) {
-            lib.test1().then(function (resp) {
-                console.log('TEST', resp);
-                done();
-                //assert.equal(answer,'YO!');
-            }, globalfail);
+            lib.gc = lib.newGraphContainer();
+			lib.gc.add('101', 30, 17, 'Line Nm', []);
+			done();
         });
         it('T020', function (done) {
-            var gc = lib.GraphContainer();
+            var gc = new lib.GraphContainer();
             console.log(gc);
             done();
         });
