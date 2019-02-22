@@ -12,6 +12,7 @@
 	config.lineStartY = 50;
 	config.stopRadius = 4;
 	config.thickness = 10;
+    config.busLineWidth = 50;
 
     module.exports = config;
 }());

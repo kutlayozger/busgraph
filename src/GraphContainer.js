@@ -1,6 +1,10 @@
 (function () {
 	var config = require("./GraphConfig");
+	var brh = 500;
     function GraphContainer(aConfig) {
+		if (!aConfig) {
+			aConfig = {};
+		}
 		config = Object.assign(aConfig, config);
 
         this.server = config.server;
@@ -10,7 +14,6 @@
         this.lines = [];
         this.height = brh - 80;
     }
-
 
     GraphContainer.prototype.removeAll = function () {
         var i;
@@ -36,7 +39,7 @@
         return false;
     };
 
-    GraphContainer.prototype.Add = function (lineNo, stopCount, middleStop, lineName, duraklar) {
+    GraphContainer.prototype.add = function (lineNo, stopCount, middleStop, lineName, duraklar) {
         if (!this.inFilter({ GuzergahNo: lineNo })) { return; }
         var line = new GraphLine(lineNo, stopCount, middleStop, lineName);
         line.Duraklar = duraklar;
@@ -50,7 +53,7 @@
         line.getBuses();
     };
 
-    GraphContainer.prototype.LoadLines = function () {
+    GraphContainer.prototype.loadLines = function () {
         var that = this, cnt, i;
         $.get("dispatch.aspx?islem=dataSender&sid=" + getQueryVariable("sid") + "&tip=guzergahliste&data=",
              function (data) {
@@ -66,7 +69,7 @@
                         }
                     }
 
-                    that.paper = Raphael(0, 0, cnt * 50 + 80, brh - 80);
+                    that.paper = Raphael(0, 0, cnt * config.busLineWidth + 80, brh - 80);
                     var item;
                     for (i = 0; i < data.list.length; i = i + 1) {
                         item = data.list[i];
